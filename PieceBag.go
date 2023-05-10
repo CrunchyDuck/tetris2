@@ -13,17 +13,16 @@ type PieceBag struct {
 func NewPieceBag(state *GameState) *PieceBag {
 	bag := PieceBag{}
 	bag.minSize = 7
-	bag.pieces = make([]Tetromino, 0, bag.minSize * 2)
-	for i := 0; i < bag.minSize; i++ {
-		
-	}
+	bag.state = state
+	bag.GetNewPieceStack()
 
 	return &bag
 }
 
 func (bag *PieceBag) TakeTopPiece() *Tetromino {
 	x, t := bag.pieces[0], bag.pieces[1:]
-	if len(t) < 7 {
+	bag.pieces = t
+	if len(bag.pieces) < 7 {
 		bag.GetNewPieceStack()
 	}
 	return &x
