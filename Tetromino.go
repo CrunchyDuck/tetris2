@@ -208,12 +208,7 @@ func (piece *Tetromino) DoesPieceFit(offset Coordinate) bool {
 			// Bounds checks
 			xPos := piece.position.x + offset.x + x
 			yPos := (piece.position.y + offset.y + y)
-			fieldIndex := xPos + (yPos * piece.state.fieldWidth)
-			if xPos >= piece.state.fieldWidth || xPos < 0 {
-				return false
-			} else if yPos >= piece.state.fieldHeight || yPos < 0 {
-				return false
-			} else if piece.state.field[fieldIndex] != ' ' { // Collision check
+			if (!piece.state.CellAvailable(xPos, yPos)) {
 				return false
 			}
 		}
