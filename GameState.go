@@ -121,7 +121,7 @@ func NewGameState(state *ProgramState, field_view, up_next_view, held_view, scor
 	}
 	this.field = fieldContent
 
-	this.DebugInitPerfectTriple()
+	// this.DebugInitPerfectTriple()
 	return &this
 }
 
